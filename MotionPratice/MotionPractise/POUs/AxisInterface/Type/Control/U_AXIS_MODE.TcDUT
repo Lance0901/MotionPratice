@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <DUT Name="U_AXIS_MODE" Id="{b2eb9d18-5c49-4e6c-bf36-1baa7e1be57b}">
+    <Declaration><![CDATA[TYPE U_AXIS_MODE :
+UNION
+	en : E_AXIS_MODE;
+	b: ST_AXIS_MODE_BITS;
+END_UNION
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

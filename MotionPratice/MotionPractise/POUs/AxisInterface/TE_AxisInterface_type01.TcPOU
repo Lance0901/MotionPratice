@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="TE_AxisInterface_type01" Id="{21b87843-9391-4741-9653-0f4a756e314c}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM TE_AxisInterface_type01
+VAR_INPUT
+    ClearError :BOOL;
+END_VAR
+
+VAR
+    uiState :UINT := STATE_FIRST_INIT; // statemachine
+    uiLoop  :UINT := 1;
+    fbAxis  :ARRAY[1..uiMAX_AXIS_NUMBER] OF TE_AxisBasic_V2;
+END_VAR
+
+VAR CONSTANT
+    STATE_FIRST_INIT :UINT := 0;
+    STATE_WAIT_ERROR :UINT := 1;
+    STATE_PRG_ERROR  :UINT := 9;
+END_VAR
+
+VAR_OUTPUT
+    InitDone :BOOL;
+    ERROR    :BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE uiState OF
+    STATE_FIRST_INIT:
+        // Add first cycle want to set or reset prog
+        FOR uiLoop := 1 TO uiMAX_AXIS_NUMBER DO
+            ;
+        END_FOR
+
+        InitDone := FALSE;
+        uiState  := STATE_WAIT_ERROR;
+    STATE_WAIT_ERROR:
+        InitDone := TRUE;
+    STATE_PRG_ERROR:
+        IF ClearError THEN
+            ERROR   := FALSE;
+            uiState := STATE_WAIT_ERROR;
+        END_IF
+ELSE
+    ERROR   := TRUE;
+    uiState := STATE_PRG_ERROR;
+END_CASE
+
+IF InitDone THEN
+	//============================================//
+	// Reflash Axis Interface					  //
+	//============================================//
+	FOR uiLoop := 1 TO uiMAX_AXIS_NUMBER DO
+		fbAxis[uiLoop].M_InitExtension(uiLoop);
+		fbAxis[uiLoop]();
+	END_FOR
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="TE_AxisInterface_type01">
+      <LineId Id="130" Count="21" />
+      <LineId Id="157" Count="2" />
+      <LineId Id="152" Count="0" />
+      <LineId Id="156" Count="0" />
+      <LineId Id="153" Count="1" />
+      <LineId Id="109" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

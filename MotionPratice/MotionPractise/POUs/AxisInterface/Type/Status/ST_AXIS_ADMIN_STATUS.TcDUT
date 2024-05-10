@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <DUT Name="ST_AXIS_ADMIN_STATUS" Id="{46250c78-759e-4e16-aca1-6a4b3e35b995}">
+    <Declaration><![CDATA[TYPE ST_AXIS_ADMIN_STATUS :
+    STRUCT
+        _OpModeAck         :E_AXIS_MODE;
+        ModeAb             :BIT;
+        ModeAH             :BIT;
+        ModeHoming         :BIT;
+        ModePosAbs         :BIT;
+        ModePosRel         :BIT;
+        ModePosAdd         :BIT;
+        ModeVel            :BIT;
+        ModeSyncPhase      :BIT;
+        ModeSyncVel        :BIT;
+        ModeSyncCam        :BIT;
+        ModeSyncProfile    :BIT;
+        ModeTorque         :BIT;
+        ModeFlexProfile    :BIT;
+        ModeStopping       :BIT;
+        ModeCoordinated    :BIT;
+        ModeInterrupted    :BIT;
+        ModeExternalFB     :BIT;
+        ModeCyclicPosition :BIT;
+        ModeCyclicVelocity :BIT;
+        ModeCyclicTorque   :BIT;
+        Active             :BOOL;
+        CmdDone            :BOOL;
+    END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

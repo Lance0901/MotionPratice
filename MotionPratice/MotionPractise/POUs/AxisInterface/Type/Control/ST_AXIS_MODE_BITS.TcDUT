@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <DUT Name="ST_AXIS_MODE_BITS" Id="{d7f9ee19-e88e-4575-a57e-6e63656ea5b3}">
+    <Declaration><![CDATA[TYPE ST_AXIS_MODE_BITS :
+STRUCT
+        ModeAb             :BIT;
+        ModeAH             :BIT;
+        ModeHoming         :BIT;
+        ModePosAbs         :BIT;
+        ModePosRel         :BIT;
+        ModePosAdd         :BIT;
+        ModeVel            :BIT;
+        ModeSyncPhase      :BIT;
+        ModeSyncVel        :BIT;
+        ModeSyncCam        :BIT;
+        ModeSyncProfile    :BIT;
+        ModeTorque         :BIT;
+        ModeFlexProfile    :BIT;
+        ModeStopping       :BIT;
+        ModeCoordinated    :BIT;
+        ModeInterrupted    :BIT;
+        ModeExternalFB     :BIT;
+        ModeCyclicPosition :BIT;
+        ModeCyclicVelocity :BIT;
+        ModeCyclicTorque   :BIT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

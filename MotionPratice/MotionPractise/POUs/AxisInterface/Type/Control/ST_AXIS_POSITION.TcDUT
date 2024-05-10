@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <DUT Name="ST_AXIS_POSITION" Id="{6d45ea76-2343-44a1-9ef7-6b223a81beb3}">
+    <Declaration><![CDATA[TYPE ST_AXIS_POSITION :
+STRUCT
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

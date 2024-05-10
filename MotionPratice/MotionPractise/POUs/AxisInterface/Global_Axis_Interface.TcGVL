@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <GVL Name="Global_Axis_Interface" Id="{dacf9f9d-d6b8-4d74-913a-d6d76ed6e141}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	arAxisCtrl_gb : ARRAY[1..uiMAX_AXIS_INDEX] OF Axis_Ctrl_gb;
+	arAxisStutus_gb : ARRAY[1..uiMAX_AXIS_INDEX] OF Axis_Status_gb;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Refactors>
+  <Renames>
+    <RenamedType>
+      <Type guid="24ea519f-f158-457d-8209-e4bc50b8f442">MODECONTROL</Type>
+      <From>ModeControl</From>
+      <To>A00_ModeControl</To>
+    </RenamedType>
+  </Renames>
+</Refactors>

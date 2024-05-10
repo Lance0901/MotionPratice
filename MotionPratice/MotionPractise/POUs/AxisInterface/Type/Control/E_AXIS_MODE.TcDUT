@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <DUT Name="E_AXIS_MODE" Id="{0236a383-d4fd-47c5-9fe1-4cdf3d2d89d6}">
+    <Declaration><![CDATA[TYPE E_AXIS_MODE :
+    (
+        ModeAb             := 0,
+        ModeAH             := 1,
+        ModeHoming         := 2,
+        ModePosAbs         := 4,
+        ModePosRel         := 8,
+        ModePosAdd         := 16,
+        ModeVel            := 32,
+        ModeSyncPhase      := 64,
+        ModeSyncVel        := 128,
+        ModeSyncCam        := 256,
+        ModeSyncProfile    := 512,
+        ModeTorque         := 1024,
+        ModeFlexProfile    := 2048,
+        ModeStopping       := 4096,
+        ModeCoordinated    := 8192,
+        ModeInterrupted    := 16384,
+        ModeExternalFB     := 32768,
+        ModeCyclicPosition := 65536,
+        ModeCyclicVelocity := 131072,
+        ModeCyclicTorque   := 262144
+    ) UDINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

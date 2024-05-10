@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <GVL Name="Global_Axif_Const" Id="{ae4ee5cc-d32f-45de-ad82-471567f33937}">
+    <Declaration><![CDATA[VAR_GLOBAL CONSTANT
+	uiMAX_AXIS_INDEX : UINT := 40; // Maximum number of servos in the system.
+	uiMAX_AXIS_NUMBER: UINT := 2; // Actual number of servos in the system.
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

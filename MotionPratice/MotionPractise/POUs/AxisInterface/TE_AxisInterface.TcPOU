@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="TE_AxisInterface" Id="{c64a8df5-a088-4788-93b6-adf5915dacb8}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK TE_AxisInterface
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+    uiState : UINT;
+    uiLoop  : UINT;
+END_VAR
+VAR CONSTANT
+    STATE_FIRST_INIT : UINT := 0;
+    STATE_WAIT_ERROR : UINT := 1;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE uiState OF
+	STATE_FIRST_INIT :
+		// for loop to add Reference
+		FOR uiLoop := 1 TO uiMAX_AXIS_NUMBER DO
+			;
+		END_FOR
+		uiState := STATE_WAIT_ERROR;
+	STATE_WAIT_ERROR : 
+		
+END_CASE
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="TE_AxisInterface">
+      <LineId Id="9" Count="1" />
+      <LineId Id="15" Count="1" />
+      <LineId Id="18" Count="1" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="21" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

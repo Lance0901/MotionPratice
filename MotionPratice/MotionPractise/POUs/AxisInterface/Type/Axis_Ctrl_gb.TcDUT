@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <DUT Name="Axis_Ctrl_gb" Id="{d80e51ef-ac42-4d33-a318-b800faeffd36}">
+    <Declaration><![CDATA[TYPE
+    Axis_Ctrl_gb :
+    STRUCT
+        Admin      : ST_AXIS_ADMINISTRATION;  // Administration of the Axis
+        PosMode    : ST_AXIS_POSITION;        // Operating mode positioning (absolute, rel, additive)
+        VelMode    : ST_AXIS_VELOCITY;        // Operation mode velocity control
+        SyncMode   : ST_AXIS_SYNCHRONISATION; // Operation mode synchronisation(phase, vel and cam)
+        TorqueMode : ST_AXIS_TORQUE;          // Operation mode / force control
+        SetupMode  : ST_AXIS_SETUP_MODE;      // Jog / Homing functionality
+    END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

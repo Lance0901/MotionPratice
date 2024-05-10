@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <DUT Name="Axis_Status_gb" Id="{d26c73d6-06da-4c1f-aea5-bfeb1e727901}">
+    <Declaration><![CDATA[TYPE
+    Axis_Status_gb :
+    STRUCT
+        Admin     : ST_AXIS_ADMIN_STATUS;
+        Diag      : ST_AXIS_DIAGNOSIS;
+        PosMode   : ST_AXIS_POS_STATUS;
+        VelMode   : ST_AXIS_VEL_STATUS;
+        SyncMode  : ST_AXIS_SYNC_STATUS;
+        SetupMode : ST_AXIS_SETUP_MODE_STATUS;
+    END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

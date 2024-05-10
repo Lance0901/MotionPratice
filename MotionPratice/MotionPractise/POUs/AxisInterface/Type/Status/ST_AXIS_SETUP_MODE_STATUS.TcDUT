@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <DUT Name="ST_AXIS_SETUP_MODE_STATUS" Id="{3da78e33-4003-4905-becd-390ba288410e}">
+    <Declaration><![CDATA[TYPE ST_AXIS_SETUP_MODE_STATUS :
+STRUCT
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
