@@ -11,7 +11,6 @@
         TorqueMode : ST_AXIS_TORQUE;          // Operation mode / force control
         SetupMode  : ST_AXIS_SETUP_MODE;      // Jog / Homing functionality
     END_STRUCT
-END_TYPE
-]]></Declaration>
+END_TYPE]]></Declaration>
   </DUT>
 </TcPlcObject>

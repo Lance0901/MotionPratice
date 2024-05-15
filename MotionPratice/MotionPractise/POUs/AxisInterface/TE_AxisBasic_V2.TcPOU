@@ -36,6 +36,7 @@ VAR
 	{attribute 'no_copy'}
 	SetupModeStatus: REFERENCE TO ST_AXIS_SETUP_MODE_STATUS;
 	ClearError: MC_Reset;
+	bAxisStop: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -45,9 +46,35 @@ END_VAR
 //=========================================//
 A90_Cyclic();]]></ST>
     </Implementation>
-    <Action Name="A00_ModeControl" Id="{24ea519f-f158-457d-8209-e4bc50b8f442}">
+    <Action Name="A00_ModeAb" Id="{24ea519f-f158-457d-8209-e4bc50b8f442}">
       <Implementation>
-        <ST><![CDATA[+]]></ST>
+        <ST><![CDATA[// Check Reference available
+IF NOT __ISVALIDREF(AdminCtrl) THEN
+	RETURN;
+END_IF
+
+// Check Operation mode is ModeAb
+IF AdminCtrl._OpMode.en <> ModeAb THEN
+	RETURN;
+END_IF
+
+// Check Axis Servo OFF
+IF NOT  AdminCtrl.Axis.Status.Disabled THEN
+	AdminStatus.ModeAb := TRUE;
+	AdminStatus._OpModeAck := ModeAb;
+	AdminStatus.CmdDone := TRUE;
+END_IF]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="A01_ModeAH" Id="{8cffe33c-0d2a-41cd-87c6-44acc73e7032}">
+      <Implementation>
+        <ST><![CDATA[IF AdminCtrl._OpMode.en <> ModeAH THEN
+	RETURN;
+END_IF
+
+IF AdminCtrl.Axis.Status.StandStill THEN
+	AdminCtrl.Axis.Status.
+END_IF]]></ST>
       </Implementation>
     </Action>
     <Action Name="A90_Cyclic" Id="{6de0965f-b939-4e05-a93a-927519bdfb7c}">
@@ -854,6 +881,52 @@ A90_Cyclic();]]></ST>
                       <v n="SourcePinId">39L</v>
                       <v n="DestPinId">15L</v>
                       <v n="Id">41L</v>
+                    </o>
+                    <o t="CFCInputElement">
+                      <o n="Output" t="CFCOutputPin">
+                        <v n="Bounds">"0, 0, 0, 0"</v>
+                        <n n="ElementGroupId" />
+                        <v n="Negated">false</v>
+                        <v n="SetReset" t="SetReset">None</v>
+                        <v n="SetResetRef" t="SetResetRef">None</v>
+                        <v n="PretendsToBeConnected">false</v>
+                        <v n="Id">432L</v>
+                      </o>
+                      <o n="Text" t="CFCText">
+                        <v n="Bounds">"0, 0, 0, 0"</v>
+                        <n n="ElementGroupId" />
+                        <v n="Text">"bAxisStop"</v>
+                        <v n="Modifiable">true</v>
+                        <v n="Id">433L</v>
+                      </o>
+                      <v n="PageArea">3</v>
+                      <v n="Bounds">"40, 6, 0, 0"</v>
+                      <n n="ElementGroupId" />
+                      <v n="OwningPageId">-1L</v>
+                      <v n="Id">431L</v>
+                    </o>
+                    <o t="CFCInputElement">
+                      <o n="Output" t="CFCOutputPin">
+                        <v n="Bounds">"0, 0, 0, 0"</v>
+                        <n n="ElementGroupId" />
+                        <v n="Negated">false</v>
+                        <v n="SetReset" t="SetReset">None</v>
+                        <v n="SetResetRef" t="SetResetRef">None</v>
+                        <v n="PretendsToBeConnected">false</v>
+                        <v n="Id">436L</v>
+                      </o>
+                      <o n="Text" t="CFCText">
+                        <v n="Bounds">"0, 0, 0, 0"</v>
+                        <n n="ElementGroupId" />
+                        <v n="Text">"AdminCtrl.StopDeceleration"</v>
+                        <v n="Modifiable">true</v>
+                        <v n="Id">437L</v>
+                      </o>
+                      <v n="PageArea">3</v>
+                      <v n="Bounds">"40, 7, 0, 0"</v>
+                      <n n="ElementGroupId" />
+                      <v n="OwningPageId">-1L</v>
+                      <v n="Id">435L</v>
                     </o>
                     <o t="CFCBoxElement">
                       <o n="Inputs" t="CFCItemList">
@@ -3295,6 +3368,20 @@ A90_Cyclic();]]></ST>
                       <v n="DestPinId">413L</v>
                       <v n="Id">430L</v>
                     </o>
+                    <o t="CFCConnection">
+                      <v n="Bounds">"0, 0, 0, 0"</v>
+                      <n n="ElementGroupId" />
+                      <v n="SourcePinId">432L</v>
+                      <v n="DestPinId">257L</v>
+                      <v n="Id">434L</v>
+                    </o>
+                    <o t="CFCConnection">
+                      <v n="Bounds">"0, 0, 0, 0"</v>
+                      <n n="ElementGroupId" />
+                      <v n="SourcePinId">436L</v>
+                      <v n="DestPinId">259L</v>
+                      <v n="Id">438L</v>
+                    </o>
                   </l2>
                 </o>
                 <n n="ParameterInitializationMethodGenerator" />
@@ -3664,6 +3751,62 @@ A90_Cyclic();]]></ST>
                         </o>
                       </l2>
                     </o>
+                    <o>
+                      <v n="ConnectionId">434L</v>
+                      <o n="StartPoint" t="CFCPoint">
+                        <v n="X">46</v>
+                        <v n="Y">6</v>
+                        <v n="IsJoint">false</v>
+                        <v n="Flags">0</v>
+                      </o>
+                      <v n="Unroutable">false</v>
+                      <n n="CorrespondingPageId" />
+                      <v n="Locked">false</v>
+                    </o>
+                    <o>
+                      <l2 n="InnerList" cet="CFCPoint">
+                        <o>
+                          <v n="X">46</v>
+                          <v n="Y">6</v>
+                          <v n="IsJoint">false</v>
+                          <v n="Flags">68</v>
+                        </o>
+                        <o>
+                          <v n="X">56</v>
+                          <v n="Y">6</v>
+                          <v n="IsJoint">false</v>
+                          <v n="Flags">97</v>
+                        </o>
+                      </l2>
+                    </o>
+                    <o>
+                      <v n="ConnectionId">438L</v>
+                      <o n="StartPoint" t="CFCPoint">
+                        <v n="X">51</v>
+                        <v n="Y">7</v>
+                        <v n="IsJoint">false</v>
+                        <v n="Flags">0</v>
+                      </o>
+                      <v n="Unroutable">false</v>
+                      <n n="CorrespondingPageId" />
+                      <v n="Locked">false</v>
+                    </o>
+                    <o>
+                      <l2 n="InnerList" cet="CFCPoint">
+                        <o>
+                          <v n="X">51</v>
+                          <v n="Y">7</v>
+                          <v n="IsJoint">false</v>
+                          <v n="Flags">68</v>
+                        </o>
+                        <o>
+                          <v n="X">56</v>
+                          <v n="Y">7</v>
+                          <v n="IsJoint">false</v>
+                          <v n="Flags">97</v>
+                        </o>
+                      </l2>
+                    </o>
                   </d2>
                 </o>
                 <v n="AutoSizeCanvas">true</v>
@@ -3740,8 +3883,26 @@ SetupModeStatus REF= arAxisStutus_gb[Index].SetupMode;
       <LineId Id="12" Count="2" />
       <LineId Id="9" Count="0" />
     </LineIds>
-    <LineIds Name="TE_AxisBasic_V2.A00_ModeControl">
-      <LineId Id="1" Count="0" />
+    <LineIds Name="TE_AxisBasic_V2.A00_ModeAb">
+      <LineId Id="29" Count="0" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="27" Count="1" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="8" Count="1" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="32" Count="1" />
+      <LineId Id="24" Count="0" />
+    </LineIds>
+    <LineIds Name="TE_AxisBasic_V2.A01_ModeAH">
+      <LineId Id="1" Count="2" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="6" Count="1" />
     </LineIds>
     <LineIds Name="TE_AxisBasic_V2.M_GetOpMode">
       <LineId Id="5" Count="0" />

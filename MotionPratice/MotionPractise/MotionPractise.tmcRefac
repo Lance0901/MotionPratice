@@ -2,9 +2,14 @@
 <Refactors>
   <Renames>
     <RenamedType>
-      <Type guid="24ea519f-f158-457d-8209-e4bc50b8f442">MODECONTROL</Type>
+      <Type guid="24ea519f-f158-457d-8209-e4bc50b8f442">A00_MODECONTROL</Type>
       <From>ModeControl</From>
-      <To>A00_ModeControl</To>
+      <To>A00_ModeAb</To>
+    </RenamedType>
+    <RenamedType>
+      <Type guid="8cffe33c-0d2a-41cd-87c6-44acc73e7032">A01_</Type>
+      <From>A01_</From>
+      <To>A01_ModeAH</To>
     </RenamedType>
   </Renames>
 </Refactors>

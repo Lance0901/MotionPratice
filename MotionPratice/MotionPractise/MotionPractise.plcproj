@@ -96,6 +96,7 @@
     <Folder Include="POUs\AxisInterface" />
     <Folder Include="POUs\AxisInterface\Type" />
     <Folder Include="POUs\AxisInterface\Type\Control" />
+    <Folder Include="POUs\AxisInterface\Type\FB" />
     <Folder Include="POUs\AxisInterface\Type\Status" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />

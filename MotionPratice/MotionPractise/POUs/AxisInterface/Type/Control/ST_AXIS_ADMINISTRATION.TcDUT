@@ -6,6 +6,7 @@ STRUCT
 	//OpMode 
 	Axis : AXIS_REF; // The reference to this Axis
 	_OpMode : U_AXIS_MODE; // Selection of the operating mode
+	StopDeceleration : LREAL; // Deceleration parameter used when an Axis executes a Stop. 
 END_STRUCT
 END_TYPE
 ]]></Declaration>
